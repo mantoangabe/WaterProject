@@ -68,3 +68,4 @@ C:\Users\gabem\OneDrive\Desktop\Water Project\backend\WaterProject.API\obj\Debug
 C:\Users\gabem\OneDrive\Desktop\Water Project\backend\WaterProject.API\obj\Debug\net8.0\WaterProject.API.pdb
 C:\Users\gabem\OneDrive\Desktop\Water Project\backend\WaterProject.API\obj\Debug\net8.0\WaterProject.API.genruntimeconfig.cache
 C:\Users\gabem\OneDrive\Desktop\Water Project\backend\WaterProject.API\obj\Debug\net8.0\ref\WaterProject.API.dll
+C:\Users\gabem\OneDrive\Desktop\Water Project\backend\WaterProject.API\obj\Debug\net8.0\WaterProject.API.sourcelink.json
