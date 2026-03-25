@@ -1475,11 +1475,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabem\\OneDrive\\Desktop\\Water Project\\backend\\WaterProject.API\\WaterProject.API.csproj",
+      "projectUniqueName": "D:\\Github\\Water Project\\backend\\WaterProject.API\\WaterProject.API.csproj",
       "projectName": "WaterProject.API",
-      "projectPath": "C:\\Users\\gabem\\OneDrive\\Desktop\\Water Project\\backend\\WaterProject.API\\WaterProject.API.csproj",
+      "projectPath": "D:\\Github\\Water Project\\backend\\WaterProject.API\\WaterProject.API.csproj",
       "packagesPath": "C:\\Users\\gabem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabem\\OneDrive\\Desktop\\Water Project\\backend\\WaterProject.API\\obj\\",
+      "outputPath": "D:\\Github\\Water Project\\backend\\WaterProject.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gabem\\AppData\\Roaming\\NuGet\\NuGet.Config"
