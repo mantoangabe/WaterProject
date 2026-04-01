@@ -1,5 +1,6 @@
 import './App.css';
 import { CartProvider } from './context/CartContext';
+import AdminProjectsPage from './pages/AdminProjectsPage';
 import CartPage from './pages/CartPage';
 import DonatePage from './pages/Donate';
 import ProjectPage from './pages/ProjectPage';
@@ -16,6 +17,7 @@ function App() {
             element={<DonatePage />}
           />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/admin/projects" element={<AdminProjectsPage />} />
         </Routes>
       </Router>
     </CartProvider>

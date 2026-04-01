@@ -1,29 +1,41 @@
 import { use, useEffect, useState } from 'react';
 import type { Project } from '../types/Project';
 import { useNavigate } from 'react-router-dom';
+import { fetchProjects } from '../api/ProjectsAPI';
+import Pagination from './Pagination';
 
 function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [PageSize, setPageSize] = useState<number>(10);
   const [PageNumber, setPageNumber] = useState<number>(1);
-  const [TotalItems, setTotalItems] = useState<number>(0);
   const [TotalPages, setTotalPages] = useState<number>(0);
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
-    const fetchProjects = async () => {
-      const categoryParams = selectedCategories.map((cat) => `categories=${encodeURIComponent(cat)}`).join('&');
-      const response = await fetch(
-        `https://localhost:5000/api/Water/AllProjects?pageSize=${PageSize}&pageNumber=${PageNumber}&${selectedCategories.length > 0 ? categoryParams : ''}`,
-      );
-      const data = await response.json();
+    const loadProjects = async () => {
+      try { 
+        setLoading(true);
+        const data = await fetchProjects(PageSize, PageNumber, selectedCategories);
+        setError(null);
       setProjects(data.projects);
-      setTotalItems(data.totalCount);
       const calculatedPages = Math.ceil(data.totalCount / PageSize);
       setTotalPages(calculatedPages);
-
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchProjects();
+    
+    loadProjects();
   }, [PageSize, PageNumber, selectedCategories]);
+  if (loading) {
+    return <p>Loading projects...</p>;
+  }
+  if (error) {
+    return <p className='text-red-500'>Error loading projects: {error}</p>;
+  }
 
   
   return (
@@ -58,46 +70,15 @@ function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
               Donate
             </button>
           </div>
+          <Pagination
+            currentPage={PageNumber}
+            totalPages={TotalPages}
+            pageSize={PageSize}
+            onPageChange={setPageNumber}
+            onPageSizeChange={setPageSize}
+          />
         </div>
       ))}
-      <div style={{ display: 'flex', gap: '5px', alignItems: 'center', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap' }}>
-      <button
-        disabled={PageNumber === 1}
-        onClick={() => setPageNumber((prev) => prev - 1)}
-      >
-        Previous
-      </button>
-
-      {[...Array(TotalPages)].map((_, i) => (
-        <button
-          key={i + 1}
-          onClick={() => setPageNumber(i + 1)}
-            disabled={PageNumber === i + 1}
-        >
-          {i + 1}
-        </button>
-      ))}
-
-      <button
-        disabled={PageNumber === TotalPages}
-        onClick={() => setPageNumber((prev) => prev + 1)}
-      >
-        Next
-      </button>
-      <br />
-      <label>
-        {' '}
-        Results per page:
-        <select
-          value={PageSize}
-          onChange={(e) => {setPageSize(Number(e.target.value)); setPageNumber(1);}}
-        >
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </label>
-      </div>
     </>
   );
 }
