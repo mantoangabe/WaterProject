@@ -140,3 +140,4 @@ D:\Github\Water Project\backend\WaterProject.API\obj\Debug\net8.0\refint\WaterPr
 D:\Github\Water Project\backend\WaterProject.API\obj\Debug\net8.0\WaterProject.API.pdb
 D:\Github\Water Project\backend\WaterProject.API\obj\Debug\net8.0\WaterProject.API.genruntimeconfig.cache
 D:\Github\Water Project\backend\WaterProject.API\obj\Debug\net8.0\ref\WaterProject.API.dll
+D:\Github\Water Project\backend\WaterProject.API\bin\Debug\net8.0\WaterProject.sqlite
